@@ -1,0 +1,5 @@
+{
+    "presets": ["@babel/preset-env"]
+}
+
+/*tell bable how we want it to transform the ES6 code that we write into common JS code that node.js code can excicute.*/
