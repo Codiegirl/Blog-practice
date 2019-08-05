@@ -4,3 +4,12 @@ npx nodemon --exec babel-node src/server.js for server to run on port 8000
 for cors error add 
     "proxy: "http://localhost:8000/" in package.json
         when we use fetch
+
+to remove react app from tab
+    go to public folder
+        index.html and change <title>React App</title>
+        manifest.json change short name and name property
+
+To Build the App
+    from the app directory run
+        npm run build

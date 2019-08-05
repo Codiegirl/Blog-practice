@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ArticlesList from '../Components/ArticlesList';
+import Upvotes from '../Components/Upvotes';
 import articleContent from './article-content';
+import CommentsList from '../Components/CommentsList';
+import AddCommentForm from '../Components/AddCommentForm';
 import NotFoundPage from './NotFoundPage';
 
 const ArticlesPage = ({ match }) => {
@@ -28,10 +31,14 @@ const ArticlesPage = ({ match }) => {
     return (
         <>
         <h1>{article.title}</h1>
-        <p>This article has {articleInfo.upvotes} votes.</p>
+        <Upvotes articleName={name} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo}/>
+        
         {article.content.map((paragraph, key) => (
             <p key={key}>{paragraph}</p>
+            
         ))}
+        <CommentsList comments={articleInfo.comments}/>
+        <AddCommentForm articleName={name} setArticleInfo={setArticleInfo}/>
         <h3>More Articles:</h3>
         <ArticlesList articles={otherArticles}/>
         </>
