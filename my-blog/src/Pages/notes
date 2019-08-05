@@ -1,0 +1,6 @@
+mongod to start mongodb in backend or server
+npx nodemon --exec babel-node src/server.js for server to run on port 8000
+
+for cors error add 
+    "proxy: "http://localhost:8000/" in package.json
+        when we use fetch

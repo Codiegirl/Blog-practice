@@ -11,8 +11,15 @@ const ArticlesPage = ({ match }) => {
     const [articleInfo, setArticleInfo] = useState({upvotes: 0, comments:[] })//react hooks are functions called to absract away state management for our components
 
     useEffect(() => {//react hook gives a place to fetch data and set state with the result
-        setArticleInfo({ upvotes: Math.ceil(Math.random() * 10) })
-    }, [name]);//useEffect will get called whenever we change between articles
+        const fetchData = async () => { //async function
+            const result = await fetch(`/api/articles/${name}`)//automaticaly proxied to the address defined in the package.json
+            const body = await result.json();//response body that contains the article info
+            setArticleInfo(body);//set state with the info from the server
+            console.log(body);
+        }
+        fetchData();
+     } , [name]);
+        
 
     if (!article) return <NotFoundPage/>
      
