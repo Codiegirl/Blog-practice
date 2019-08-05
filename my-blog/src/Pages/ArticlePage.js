@@ -4,6 +4,8 @@ import articleContent from './article-content';
 import NotFoundPage from './NotFoundPage';
 
 const ArticlesPage = ({ match }) => {
+
+    
     const name = match.params.name;
     const article = articleContent.find(article => article.name === name);
 
