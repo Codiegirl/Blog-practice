@@ -1,10 +1,13 @@
 import express from 'express'
 import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
+import path from 'path';
 
 
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/build'))); //where to serve static files from
 
 app.use(bodyParser.json()); /*parses the json object and adds a body property to the request perameter of whatever the matching route is*/
 
@@ -61,7 +64,12 @@ app.post('/api/articles/:name/add-comment', (req, res) => {
         const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
         res.status(200).json(updatedArticleInfo);
     }, res);
-})
+});
+
+app.get('*', (req, res) => {
+    res.sendFild(path.join(__dirname + '/build/index.html'));
+})//tells the app all requests not caught by any of the other api routes should be passed on to our app 
+//allows client side to navigate between pages and process url's correctly
 
 app.listen(8000, () => console.log('Listening on port 8000'));
 
