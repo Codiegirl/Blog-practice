@@ -16,6 +16,8 @@ const AddCommentForm = ({ articleName, setArticleInfo}) => {
         const body = await result.json()
         setArticleInfo(body)
     }
+    
+    
     return(
         <div id="add-comment-form">
         <h3>Add a Comment</h3>
@@ -28,6 +30,7 @@ const AddCommentForm = ({ articleName, setArticleInfo}) => {
             <textarea rows="4" cols="50" value={commentText} onChange={(event) => setCommentText(event.target.value)}/>
         </label>
         <button onClick={() => addComment() }>Add Comment</button>
+        
         </div>
 )
     }

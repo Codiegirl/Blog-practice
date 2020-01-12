@@ -12,4 +12,33 @@ to remove react app from tab
 
 To Build the App
     from the app directory run
-        npm run build
+        npm run build in the front-end
+        copy and paste the build folder into the src folder of the backend
+                allows the server to serve the frontend site
+
+        Then add to the server.js file
+            app.use(express.static(path.join(__dirname, '/build')));
+            import path from 'path';
+                then at the end put
+                    app.get('*', (req, res) => {
+                        res.sendFild(path.join(__dirname + '/build/index.html'))
+                    })
+
+    run mongod
+
+    go into the backend folder and run
+        npm start
+
+    check localhost:8000 to make sure everything still works 
+            ***everything is now running on one server instead of 2
+
+   create an empty git repository
+        run in the backend folder
+        git init (will initialize an empty git repo)
+        git status
+
+        create folder in backend
+            .gitignore
+              put node_module
+
+

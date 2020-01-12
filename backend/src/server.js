@@ -67,7 +67,7 @@ app.post('/api/articles/:name/add-comment', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFild(path.join(__dirname + '/build/index.html'));
+    res.sendFile(path.join(__dirname + '/build/index.html'));
 })//tells the app all requests not caught by any of the other api routes should be passed on to our app 
 //allows client side to navigate between pages and process url's correctly
 
